@@ -3,9 +3,9 @@ package com.hemebiotech.analytics;
 
 import java.io.FileWriter;
 
-public class SymptomsWriter {
+public class SymptomsWriter extends DataSymptoms {
 
-    public static void writer() throws Exception {
+    public static void symptomswriter() throws Exception {
 
         // next generate output
         FileWriter writer = new FileWriter("result.out");

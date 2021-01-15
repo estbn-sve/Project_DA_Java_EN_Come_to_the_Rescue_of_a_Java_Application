@@ -6,14 +6,19 @@ import java.util.ArrayList;
 
 public class SymptomsReader {
 
-    public static void reader() throws Exception {
+    public static ArrayList<String> symptomslist = new ArrayList<>();
+
+    public static void symptomsreader() throws Exception {
         BufferedReader reader = new BufferedReader(new FileReader("symptoms.txt"));
 
-        ArrayList<String> symptomslist = new ArrayList<>();
         reader.lines().forEach(readLine -> {
             symptomslist.add(readLine);
         });
-
     }
+
+    public static ArrayList<String> getSymptomslist() {
+        return symptomslist;
+    }
+
 
 }
