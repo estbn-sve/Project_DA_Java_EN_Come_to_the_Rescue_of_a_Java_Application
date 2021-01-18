@@ -2,19 +2,38 @@ package com.hemebiotech.analytics;
 
 
 import java.io.FileWriter;
+import java.io.IOException;
 
-public class SymptomsWriter extends DataSymptoms {
+public class SymptomsWriter extends DataSymptoms{
 
-    public static void symptomswriter() throws Exception {
+    public SymptomsWriter(String[][2] symptomsCount) {
+        this.symptomsCount = symptomsCount;
+    }
 
-        // next generate output
-        FileWriter writer = new FileWriter("result.out");
-        for (int i = 0; i< symptoms.length ; i++){
-            String result = symptoms[i][0];
+    public void symptomsWriter(){
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter("result.out");
+        } catch (IOException e) {
+            System.err.println("Writing error.");
+            System.exit(3);
+        }
+        for (int i = 0; i< symptomsCount.length ; i++){
+            String result = symptomsCount[i][0];
             if (result != null ){
-                writer.write("Symptoms : " + symptoms[i][0] + " occurrences numbers " + symptoms[i][1] + "." + "\n");
+                try {
+                    writer.write("Symptoms : " + symptomsCount[i][0] + " occurrences numbers " + symptomsCount[i][1] + "." + "\n");
+                } catch (IOException e) {
+                    System.err.println("Error line "+ i +" to writing.");
+                    System.exit(4);
+                }
             }
         }
-        writer.close();
+        try {
+            writer.close();
+        } catch (IOException e) {
+            System.err.println("Error closing writer.");
+            System.exit(5);
+        }
     }
 }

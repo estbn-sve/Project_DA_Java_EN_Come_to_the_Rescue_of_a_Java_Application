@@ -1,23 +1,30 @@
 package com.hemebiotech.analytics;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 
 public class SymptomsReader {
 
-    public static ArrayList<String> symptomslist = new ArrayList<>();
+    public ArrayList<String> symptomsInput = new ArrayList<>();
 
-    public static void symptomsreader() throws Exception {
-        BufferedReader reader = new BufferedReader(new FileReader("symptoms.txt"));
+    public void symptomsreader(){
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader("symptoms.txt"));
+        } catch (FileNotFoundException e) {
+            System.err.println("Fichier non trouvé.");
+            System.exit(1);
+        }
 
         reader.lines().forEach(readLine -> {
-            symptomslist.add(readLine);
+            symptomsInput.add(readLine);
         });
     }
 
-    public static ArrayList<String> getSymptomslist() {
-        return symptomslist;
+    public ArrayList<String> getSymptomslist() {
+        return symptomsInput;
     }
 
 

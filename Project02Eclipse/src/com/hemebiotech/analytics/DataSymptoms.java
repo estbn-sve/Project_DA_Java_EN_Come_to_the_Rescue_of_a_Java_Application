@@ -1,5 +1,6 @@
 package com.hemebiotech.analytics;
 
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -7,29 +8,36 @@ import java.util.Set;
 
 public class DataSymptoms extends SymptomsReader {
 
-    private static Set<String> setsymptoms = new HashSet<>(symptomslist); // HashSet to delete double.
-    private static ArrayList<String> symptomslist2 = new ArrayList<>(setsymptoms); // List with not double to compare to count.
-    public static String[][] symptoms = new String[symptomslist2.size()][2];
+    private Set<String> setsymptoms; // HashSet to delete double.
+    private ArrayList<String> symptomslist2; // List with not double to compare to count.
+    public String[][] symptomsCount;
 
-    public static void datasymptoms() throws Exception {
+    public DataSymptoms(ArrayList<String> symptomsInput) {
+        this.symptomsInput = symptomsInput;
+        setsymptoms = new HashSet<>(symptomsInput);
+        symptomslist2 = new ArrayList<>(setsymptoms);
+        symptomsCount = new String[symptomslist2.size()][2];
+    }
+
+    public void countSymptoms(){
 
         for (int a = 0; a < symptomslist2.size(); a++) {
             Collections.sort(symptomslist2);
             String result1 = symptomslist2.get(a);
             int count = 0;
-            for (int b = 0; b < symptomslist.size(); b++) {
-                String result2 = symptomslist.get(b);
+            for (int b = 0; b < symptomsInput.size(); b++) {
+                String result2 = symptomsInput.get(b);
                 if (result1.equals(result2)) {
                     count++;
                 }
             }
-            String strcount = Integer.toString(count);
-            symptoms[a][0] = result1;
-            symptoms[a][1] = strcount;
+            String strCount = Integer.toString(count);
+            symptomsCount[a][0] = result1;
+            symptomsCount[a][1] = strCount;
         }
     }
 
-    public static String[][] getSymptoms() {
-        return symptoms;
+    public String[][] getSymptomsCount() {
+        return symptomsCount;
     }
 }
