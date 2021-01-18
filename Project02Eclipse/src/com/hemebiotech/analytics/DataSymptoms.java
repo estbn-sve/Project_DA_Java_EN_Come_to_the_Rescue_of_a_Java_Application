@@ -19,6 +19,9 @@ public class DataSymptoms extends SymptomsReader {
         symptomsCount = new String[symptomslist2.size()][2];
     }
 
+    public DataSymptoms() {
+    }
+
     public void countSymptoms(){
 
         for (int a = 0; a < symptomslist2.size(); a++) {

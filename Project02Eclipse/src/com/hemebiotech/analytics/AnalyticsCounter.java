@@ -14,5 +14,6 @@ public class AnalyticsCounter {
 
         SymptomsWriter StartSymptomsWriter = new SymptomsWriter(startCountSymptoms.getSymptomsCount());
         StartSymptomsWriter.symptomsWriter();
+
     }
 }

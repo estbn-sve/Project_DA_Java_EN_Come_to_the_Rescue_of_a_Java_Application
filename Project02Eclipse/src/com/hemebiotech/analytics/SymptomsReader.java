@@ -14,7 +14,7 @@ public class SymptomsReader {
         try {
             reader = new BufferedReader(new FileReader("symptoms.txt"));
         } catch (FileNotFoundException e) {
-            System.err.println("Fichier non trouvé.");
+            System.err.println("Fichier non  trouvé.");
             System.exit(1);
         }
 

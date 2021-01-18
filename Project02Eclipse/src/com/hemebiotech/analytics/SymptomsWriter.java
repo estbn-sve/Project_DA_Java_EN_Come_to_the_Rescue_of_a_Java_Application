@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class SymptomsWriter extends DataSymptoms{
 
-    public SymptomsWriter(String[][2] symptomsCount) {
+    public SymptomsWriter(String[][] symptomsCount) {
         this.symptomsCount = symptomsCount;
     }
 
