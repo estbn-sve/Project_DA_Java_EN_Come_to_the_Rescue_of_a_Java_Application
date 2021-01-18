@@ -1,10 +1,7 @@
 package com.hemebiotech.analytics;
 
 import javax.xml.crypto.Data;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class DataSymptoms extends SymptomsReader {
 
@@ -12,17 +9,15 @@ public class DataSymptoms extends SymptomsReader {
     private ArrayList<String> symptomslist2; // List with not double to compare to count.
     public String[][] symptomsCount;
 
-    public DataSymptoms(ArrayList<String> symptomsInput) {
+    public DataSymptoms(TreeMap<String, Integer> symptomsInput) {
         this.symptomsInput = symptomsInput;
-        setsymptoms = new HashSet<>(symptomsInput);
+        /*setsymptoms = new HashSet<>(symptomsInput);
         symptomslist2 = new ArrayList<>(setsymptoms);
-        symptomsCount = new String[symptomslist2.size()][2];
+        symptomsCount = new String[symptomslist2.size()][2];*/
     }
 
-    public DataSymptoms() {
-    }
 
-    public void countSymptoms(){
+    /*public void countSymptoms(){
 
         for (int a = 0; a < symptomslist2.size(); a++) {
             Collections.sort(symptomslist2);
@@ -38,7 +33,7 @@ public class DataSymptoms extends SymptomsReader {
             symptomsCount[a][0] = result1;
             symptomsCount[a][1] = strCount;
         }
-    }
+    }*/
 
     public String[][] getSymptomsCount() {
         return symptomsCount;

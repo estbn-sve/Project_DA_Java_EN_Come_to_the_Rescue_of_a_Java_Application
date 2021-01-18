@@ -9,10 +9,10 @@ public class AnalyticsCounter {
         SymptomsReader startSymptomsReader = new SymptomsReader();
         startSymptomsReader.symptomsreader();
 
-        DataSymptoms startCountSymptoms = new DataSymptoms(startSymptomsReader.getSymptomslist());
-        startCountSymptoms.countSymptoms();
+//        DataSymptoms startCountSymptoms = new DataSymptoms(startSymptomsReader.getSymptomsInput());
+//        startCountSymptoms.countSymptoms();
 
-        SymptomsWriter StartSymptomsWriter = new SymptomsWriter(startCountSymptoms.getSymptomsCount());
+        SymptomsWriter StartSymptomsWriter = new SymptomsWriter(startSymptomsReader.getSymptomsInput());
         StartSymptomsWriter.symptomsWriter();
 
     }
