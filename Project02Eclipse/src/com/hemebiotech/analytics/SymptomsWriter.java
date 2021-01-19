@@ -11,7 +11,7 @@ public class SymptomsWriter extends SymptomsReader{
         this.symptomsInput = symptomsInput;
     }
 
-    public void symptomsWriter(){
+    public void writeSymptoms(){
         FileWriter writer = null;
         try {
             writer = new FileWriter("result.out");
@@ -19,30 +19,16 @@ public class SymptomsWriter extends SymptomsReader{
             System.err.println("Writing error.");
             System.exit(3);
         }
-        for (int i = 0; i<symptomsInput.size(); i++){
             try {
                 writer.write("Symptoms : " + symptomsInput);
             } catch (IOException e) {
-                System.err.println("Error line "+ i +" to writing.");
+                System.err.println("Error to writing.");
                 System.exit(4);
             }
-        }
-
-        /*for (int i = 0; i< symptomsCount.length ; i++){
-            String result = symptomsCount[i][0];
-            if (result != null ){
-                try {
-                    writer.write("Symptoms : " + symptomsCount<String> + " occurrences numbers " + symptomsCount<Integer> + "." + "\n");
-                } catch (IOException e) {
-                    System.err.println("Error line "+ i +" to writing.");
-                    System.exit(4);
-                }
-            }
-        }*/
         try {
             writer.close();
         } catch (IOException e) {
-            System.err.println("Error closing writer.");
+            System.err.println("Error writer closing.");
             System.exit(5);
         }
     }

@@ -9,7 +9,7 @@ import java.util.TreeMap;
 public class SymptomsReader {
     public TreeMap<String, Integer> symptomsInput = new TreeMap<>();
 
-    public void symptomsreader() {
+    public void readSymptoms() {
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader("symptoms.txt"));
