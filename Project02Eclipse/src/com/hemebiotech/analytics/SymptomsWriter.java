@@ -16,20 +16,28 @@ public class SymptomsWriter extends SymptomsReader{
         try {
             writer = new FileWriter("result.out");
         } catch (IOException e) {
-            System.err.println("Writing error.");
-            System.exit(3);
+            System.err.println("Create writer file error.");
+            Runtime.getRuntime().halt(1);
         }
-            try {
-                writer.write("Symptoms : " + symptomsInput);
-            } catch (IOException e) {
-                System.err.println("Error to writing.");
-                System.exit(4);
-            }
+
+        try {
+            writer.write("Symptoms : " + symptomsInput);
+        } catch (IOException e) {
+            System.err.println("Error to writing.");
+            Runtime.getRuntime().halt(1);
+        }
+        finally {
+            Runtime.getRuntime().halt(1);
+        }
+
         try {
             writer.close();
         } catch (IOException e) {
             System.err.println("Error writer closing.");
-            System.exit(5);
+            Runtime.getRuntime().halt(1);
+        }
+        finally {
+            Runtime.getRuntime().halt(1);
         }
     }
 }
