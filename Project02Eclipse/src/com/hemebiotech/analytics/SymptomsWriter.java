@@ -3,41 +3,36 @@ package com.hemebiotech.analytics;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Map;
 import java.util.TreeMap;
 
 public class SymptomsWriter extends SymptomsReader{
+    private static final String OUT_FILE="result.out";
 
     public SymptomsWriter(TreeMap<String, Integer> symptomsInput){
         this.symptomsInput = symptomsInput;
     }
 
     public void writeSymptoms(){
-        FileWriter writer = null;
+        FileWriter writer;
         try {
-            writer = new FileWriter("result.out");
+            writer = new FileWriter(OUT_FILE);
         } catch (IOException e) {
             System.err.println("Create writer file error.");
-            Runtime.getRuntime().halt(1);
+            return;
         }
-
-        try {
-            writer.write("Symptoms : " + symptomsInput);
-        } catch (IOException e) {
-            System.err.println("Error to writing.");
-            Runtime.getRuntime().halt(1);
+        for (Map.Entry<String, Integer> symptom:symptomsInput.entrySet()){
+            try {
+                writer.write("Symptoms : " + symptom.getKey() + " = " +symptom.getValue() + "\n");
+            } catch (IOException e) {
+                System.err.println("Error to writing.");
+                return;
+            }
         }
-        finally {
-            Runtime.getRuntime().halt(1);
-        }
-
         try {
             writer.close();
         } catch (IOException e) {
             System.err.println("Error writer closing.");
-            Runtime.getRuntime().halt(1);
-        }
-        finally {
-            Runtime.getRuntime().halt(1);
         }
     }
 }

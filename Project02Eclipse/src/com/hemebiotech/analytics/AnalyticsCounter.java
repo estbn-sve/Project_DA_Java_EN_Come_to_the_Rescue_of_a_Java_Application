@@ -5,12 +5,11 @@ import java.lang.String;
 public class AnalyticsCounter {
 
 
-    public static void main(String args[]){
+    public static void main(String[] args){
         SymptomsReader startSymptomsReader = new SymptomsReader();
-        startSymptomsReader.readSymptoms();
-
-        SymptomsWriter StartSymptomsWriter = new SymptomsWriter(startSymptomsReader.getSymptomsInput());
-        StartSymptomsWriter.writeSymptoms();
-
+        if (startSymptomsReader.readSymptoms()) {
+            SymptomsWriter StartSymptomsWriter = new SymptomsWriter(startSymptomsReader.getSymptomsInput());
+            StartSymptomsWriter.writeSymptoms();
+        }
     }
 }

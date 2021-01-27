@@ -6,20 +6,17 @@ import java.io.FileReader;
 import java.util.TreeMap;
 
 public class SymptomsReader {
+    private static final String INPUT_FILE = "symptoms.txt";
     public TreeMap<String, Integer> symptomsInput = new TreeMap<>();
 
-    public void readSymptoms(){
-        BufferedReader reader = null;
+    public boolean readSymptoms(){
+        BufferedReader reader;
         try {
-            reader = new BufferedReader(new FileReader("symptoms1.txt"));
+            reader = new BufferedReader(new FileReader(INPUT_FILE));
         } catch (FileNotFoundException e) {
             System.err.println("Fichier non trouvé.");
-            Runtime.getRuntime().halt(1);
+            return false;
         }
-        finally {
-            Runtime.getRuntime().halt(1);
-        }
-        assert reader != null;
         reader.lines().forEach(readLine -> {
             if (symptomsInput.containsKey(readLine)) {
                 symptomsInput.put(readLine, symptomsInput.get(readLine) + 1);
@@ -27,7 +24,7 @@ public class SymptomsReader {
                 symptomsInput.put(readLine, 1);
             }
         });
-
+        return true;
     }
 
     public TreeMap<String, Integer> getSymptomsInput() {
