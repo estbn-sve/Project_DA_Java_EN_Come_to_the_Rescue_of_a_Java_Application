@@ -3,47 +3,36 @@ package com.hemebiotech.analytics;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Map;
 import java.util.TreeMap;
 
 public class SymptomsWriter extends SymptomsReader{
+    private static final String OUT_FILE="result.out";
 
     public SymptomsWriter(TreeMap<String, Integer> symptomsInput){
         this.symptomsInput = symptomsInput;
     }
 
-    public void symptomsWriter(){
-        FileWriter writer = null;
+    public void writeSymptoms(){
+        FileWriter writer;
         try {
-            writer = new FileWriter("result.out");
+            writer = new FileWriter(OUT_FILE);
         } catch (IOException e) {
-            System.err.println("Writing error.");
-            System.exit(3);
+            System.err.println("Create writer file error.");
+            return;
         }
-        for (int i = 0; i<symptomsInput.size(); i++){
+        for (Map.Entry<String, Integer> symptom:symptomsInput.entrySet()){
             try {
-                writer.write("Symptoms : " + symptomsInput);
+                writer.write("Symptoms : " + symptom.getKey() + " = " +symptom.getValue() + "\n");
             } catch (IOException e) {
-                System.err.println("Error line "+ i +" to writing.");
-                System.exit(4);
+                System.err.println("Error to writing.");
+                return;
             }
         }
-
-        /*for (int i = 0; i< symptomsCount.length ; i++){
-            String result = symptomsCount[i][0];
-            if (result != null ){
-                try {
-                    writer.write("Symptoms : " + symptomsCount<String> + " occurrences numbers " + symptomsCount<Integer> + "." + "\n");
-                } catch (IOException e) {
-                    System.err.println("Error line "+ i +" to writing.");
-                    System.exit(4);
-                }
-            }
-        }*/
         try {
             writer.close();
         } catch (IOException e) {
-            System.err.println("Error closing writer.");
-            System.exit(5);
+            System.err.println("Error writer closing.");
         }
     }
 }
